@@ -1,0 +1,12 @@
+{
+  "schema": "snowmountain.tool/v1",
+  "id": "sandbox-probe",
+  "version": "1.0.0",
+  "inputSchema": {
+    "type": "object",
+    "properties": { "file": { "type": "string" }, "content": { "type": "string" } },
+    "required": ["file", "content"]
+  },
+  "permissions": ["filesystem:workspace-write"],
+  "sideEffects": ["Creates one file below /workspace"]
+}

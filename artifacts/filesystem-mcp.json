@@ -1,0 +1,10 @@
+{
+  "schema": "snowmountain.mcp/v1",
+  "id": "filesystem-readonly-mcp",
+  "version": "1.0.0",
+  "transport": "stdio",
+  "command": "npx",
+  "args": ["-y", "@modelcontextprotocol/server-filesystem", "/workspace"],
+  "permissions": ["filesystem:workspace-read"],
+  "credentials": []
+}
