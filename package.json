@@ -6,6 +6,7 @@
   "packageManager": "pnpm@10.12.1",
   "scripts": {
     "catalog": "node scripts/build-catalog.mjs",
+    "sync:external": "node scripts/sync-external.mjs",
     "dev": "pnpm catalog && vite --host 127.0.0.1 --port 4320",
     "build": "pnpm catalog && tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
