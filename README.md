@@ -4,6 +4,16 @@
 
 Market 不执行安装、不托管用户凭证。构建产物只有静态网站、`api/catalog.json`、每条能力的详情 JSON，以及带 SHA-256 的制品文件。雪山方舟在 Agent 创建页读取这个 endpoint；其他 Agent 也可以独立消费。
 
+## Git-first 是什么意思
+
+Git-first 只说明**事实源和变更流程**，不等于“不需要程序或部署”：
+
+- 能力条目、版本、权限、来源和制品引用的权威数据保存在 Git 仓库；修改通过 commit / review / tag 审计。
+- 构建程序读取这些 Markdown 与 Manifest，校验 Schema 和 SHA-256，再生成前端和静态 JSON API。
+- 运行时仍需要浏览器前端和 HTTP 托管；当前由 Vite 构建、GitHub Pages 部署，也可以用仓库内 Dockerfile 自托管。
+- 部署后的数据来自构建时的 Git snapshot，不依赖在线数据库；仓库更新并重新部署后才会改变。
+- “Git-first”只适用于雪山 Market，不适用于数据库驱动的雪山方舟中台。
+
 ## 本地运行
 
 ```bash
