@@ -20,6 +20,12 @@ test("builds the reviewed and imported catalog with provenance", async () => {
   assert.equal(catalog.sources.find((source) => source.id === "clawhub")?.itemCount, 400);
   assert.equal(catalog.sources.find((source) => source.id === "wind-aifin")?.itemCount, 98);
   assert.ok((catalog.sources.find((source) => source.id === "mcp-official")?.itemCount ?? 0) > 250);
+  assert.ok((catalog.sources.find((source) => source.id === "tavily-official")?.itemCount ?? 0) >= 10);
+  assert.ok((catalog.sources.find((source) => source.id === "firecrawl-official")?.itemCount ?? 0) >= 15);
+  assert.ok(catalog.summary.types.plugin >= 5);
+  assert.ok(catalog.summary.types.cli >= 2);
+  assert.ok(catalog.items.some((item) => item.registry === "tavily-official" && item.type === "mcp" && item.badges.includes("精选")));
+  assert.ok(catalog.items.some((item) => item.registry === "firecrawl-official" && item.type === "skill" && item.badges.includes("官方")));
   for (const item of catalog.items.filter((entry) => entry.registry === "snowmountain")) {
     assert.match(item.sha256, /^[0-9a-f]{64}$/);
     const detail = JSON.parse(await readFile(new URL(`../public/api/entries/${item.id}.json`, import.meta.url), "utf8"));

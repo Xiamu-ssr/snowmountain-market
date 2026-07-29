@@ -1,6 +1,6 @@
 {
   "format": "snowmountain.market.imports/v2",
-  "syncedAt": "2026-07-29T09:10:56.418Z",
+  "syncedAt": "2026-07-29T10:21:41.103Z",
   "sources": [
     {
       "id": "clawhub",
@@ -12,7 +12,7 @@
       "note": "只缓存公开、非 suspicious 的目录元数据；不复制 Skill 内容，不继承上游信任。",
       "status": "synced",
       "itemCount": 400,
-      "syncedAt": "2026-07-29T09:10:56.418Z"
+      "syncedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "mcp-official",
@@ -22,9 +22,9 @@
       "api": "https://registry.modelcontextprotocol.io/v0.1/servers",
       "strategy": "cached-registry-metadata",
       "note": "只收录 active + latest 版本；命名空间验证不等于代码安全审计。",
-      "status": "synced",
+      "status": "cached-fallback",
       "itemCount": 275,
-      "syncedAt": "2026-07-29T09:10:56.418Z"
+      "syncedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-aifin",
@@ -36,7 +36,31 @@
       "note": "缓存公开市场元数据；安装和 WIND_API_KEY 仍由 Wind 官方流程负责。",
       "status": "synced",
       "itemCount": 98,
-      "syncedAt": "2026-07-29T09:10:56.418Z"
+      "syncedAt": "2026-07-29T10:21:41.103Z"
+    },
+    {
+      "id": "tavily-official",
+      "name": "Tavily Official",
+      "type": "official-capability-repositories",
+      "url": "https://github.com/tavily-ai",
+      "api": "https://api.github.com/orgs/tavily-ai/repos",
+      "strategy": "cached-official-repository-metadata",
+      "note": "索引 Tavily 官方 MCP、Skills、Plugins 与 CLI；同一能力的不同制品类型分别展示。",
+      "status": "synced",
+      "itemCount": 13,
+      "syncedAt": "2026-07-29T10:21:41.103Z"
+    },
+    {
+      "id": "firecrawl-official",
+      "name": "Firecrawl Official",
+      "type": "official-capability-repositories",
+      "url": "https://github.com/firecrawl",
+      "api": "https://api.github.com/orgs/firecrawl/repos",
+      "strategy": "cached-official-repository-metadata",
+      "note": "索引 Firecrawl 官方 MCP、Skills、Plugins 与 CLI；凭证与安装仍由执行环境负责。",
+      "status": "synced",
+      "itemCount": 20,
+      "syncedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "skills-sh",
@@ -132,7 +156,7 @@
       "popularity": {
         "downloads": 267262,
         "installs": 12155,
-        "stars": 1278
+        "stars": 1279
       },
       "updatedAt": "2026-05-11T07:51:18.349Z"
     },
@@ -1372,7 +1396,7 @@
       "popularity": {
         "downloads": 68482,
         "installs": 2174,
-        "stars": 198
+        "stars": 199
       },
       "updatedAt": "2026-05-18T20:48:39.429Z"
     },
@@ -25365,7 +25389,7 @@
       ],
       "source": "remote",
       "popularity": {},
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-1-wind-mcp-skill-9af3bb8d",
@@ -25407,7 +25431,7 @@
       "popularity": {
         "downloads": 27101
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-3-earnings-analysis-7180bd94",
@@ -25449,7 +25473,7 @@
       "popularity": {
         "downloads": 110
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-4-dcf-model-761f66f7",
@@ -25491,7 +25515,7 @@
       "popularity": {
         "downloads": 125
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-5-post-market-debrief-95624ee8",
@@ -25533,7 +25557,7 @@
       "popularity": {
         "downloads": 285
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-6-valuation-pricing-framework-2f70d08f",
@@ -25572,7 +25596,7 @@
       "popularity": {
         "downloads": 115
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-7-equity-investment-thesis-7582d69a",
@@ -25614,7 +25638,7 @@
       "popularity": {
         "downloads": 243
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-8-a-share-primary-theme-identification-90edafd0",
@@ -25656,7 +25680,7 @@
       "popularity": {
         "downloads": 238
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-9-position-sizer-863c1f2d",
@@ -25695,7 +25719,7 @@
       "popularity": {
         "downloads": 122
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-10-backtest-expert-bf9a1ba2",
@@ -25734,7 +25758,7 @@
       "popularity": {
         "downloads": 142
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-11-market-environment-analysis-3dc8decc",
@@ -25776,7 +25800,7 @@
       "popularity": {
         "downloads": 176
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-12-theme-detector-301356ad",
@@ -25815,7 +25839,7 @@
       "popularity": {
         "downloads": 96
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-15-valuation-snapshot-skill-30f3d2ab",
@@ -25854,7 +25878,7 @@
       "popularity": {
         "downloads": 77
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-16-bull-bear-case-builder-skill-35f8e5ee",
@@ -25896,7 +25920,7 @@
       "popularity": {
         "downloads": 117
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-17-peer-comparison-decision-skill-bc1542f0",
@@ -25935,7 +25959,7 @@
       "popularity": {
         "downloads": 117
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-18-moat-strength-review-skill-7bdb53fc",
@@ -25974,7 +25998,7 @@
       "popularity": {
         "downloads": 106
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-19-business-model-decoder-skill-f72dfb59",
@@ -26013,7 +26037,7 @@
       "popularity": {
         "downloads": 109
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-20-major-announcement-impact-skill-e4aae74f",
@@ -26052,7 +26076,7 @@
       "popularity": {
         "downloads": 104
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-21-conference-call-takeaway-skill-9a4a76b9",
@@ -26091,7 +26115,7 @@
       "popularity": {
         "downloads": 88
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-22-guidance-change-impact-skill-31bfba05",
@@ -26130,7 +26154,7 @@
       "popularity": {
         "downloads": 82
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-23-sec-filing-question-answer-skill-bbd2d64a",
@@ -26169,7 +26193,7 @@
       "popularity": {
         "downloads": 77
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-24-sector-rotation-radar-skill-f4257e1d",
@@ -26208,7 +26232,7 @@
       "popularity": {
         "downloads": 226
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-25-market-regime-switch-skill-542d2020",
@@ -26247,7 +26271,7 @@
       "popularity": {
         "downloads": 176
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-26-institutional-position-shift-skill-42158a2c",
@@ -26286,7 +26310,7 @@
       "popularity": {
         "downloads": 105
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-27-theme-leader-identification-skill-f6fbceb1",
@@ -26325,7 +26349,7 @@
       "popularity": {
         "downloads": 130
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-28-breakout-candidate-finder-skill-4f224aa7",
@@ -26364,7 +26388,7 @@
       "popularity": {
         "downloads": 116
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-29-pullback-opportunity-finder-skill-06257c83",
@@ -26403,7 +26427,7 @@
       "popularity": {
         "downloads": 109
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-30-high-quality-compounder-finder-skill-8892e1d1",
@@ -26442,7 +26466,7 @@
       "popularity": {
         "downloads": 106
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-31-trade-plan-builder-skill-75cf3f7a",
@@ -26481,7 +26505,7 @@
       "popularity": {
         "downloads": 178
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-32-position-sizing-decision-skill-174d5bbf",
@@ -26520,7 +26544,7 @@
       "popularity": {
         "downloads": 107
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-33-stop-loss-discipline-skill-48894791",
@@ -26559,7 +26583,7 @@
       "popularity": {
         "downloads": 95
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-34-take-profit-ladder-skill-b9149a43",
@@ -26598,7 +26622,7 @@
       "popularity": {
         "downloads": 91
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-35-tushare-finance-skill-eb45ca52",
@@ -26636,7 +26660,7 @@
       "popularity": {
         "downloads": 81
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-36-bond-rate-outlook-024bbe74",
@@ -26677,7 +26701,7 @@
       "popularity": {
         "downloads": 90
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-37-company-one-page-investment-memo-64466463",
@@ -26718,7 +26742,7 @@
       "popularity": {
         "downloads": 86
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-38-comps-analysis-334dc474",
@@ -26759,7 +26783,7 @@
       "popularity": {
         "downloads": 100
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-39-credit-analysis-9fd3d049",
@@ -26800,7 +26824,7 @@
       "popularity": {
         "downloads": 80
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-40-fact-check-d77507cf",
@@ -26841,7 +26865,7 @@
       "popularity": {
         "downloads": 98
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-41-fund-screening-investment-advisory-8ec3b45e",
@@ -26882,7 +26906,7 @@
       "popularity": {
         "downloads": 125
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-42-global-share-quarterly-earnings-review-3c607aec",
@@ -26923,7 +26947,7 @@
       "popularity": {
         "downloads": 180
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-43-inflation-bond-strategy-c45464e0",
@@ -26964,7 +26988,7 @@
       "popularity": {
         "downloads": 89
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-44-investment-idea-generation-c10d5527",
@@ -27005,7 +27029,7 @@
       "popularity": {
         "downloads": 120
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-45-macro-data-interpretation-d8391f42",
@@ -27046,7 +27070,7 @@
       "popularity": {
         "downloads": 99
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-46-market-sizing-strategic-modeling-62a57cf5",
@@ -27087,7 +27111,7 @@
       "popularity": {
         "downloads": 88
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-47-public-fund-compare-b414dbeb",
@@ -27128,7 +27152,7 @@
       "popularity": {
         "downloads": 110
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-48-stock-dd-list-e1659852",
@@ -27169,7 +27193,7 @@
       "popularity": {
         "downloads": 83
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-49-thematic-stock-screening-8977498a",
@@ -27210,7 +27234,7 @@
       "popularity": {
         "downloads": 95
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-50-avatar-charlie-munger-thinking-3e699db4",
@@ -27250,7 +27274,7 @@
       "popularity": {
         "downloads": 24
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-51-avatar-nassim-taleb-risk-a6491056",
@@ -27290,7 +27314,7 @@
       "popularity": {
         "downloads": 26
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-52-avatar-naval-ravikant-thinking-0670cea2",
@@ -27330,7 +27354,7 @@
       "popularity": {
         "downloads": 23
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-53-avatar-warren-buffett-investing-9b6e1f20",
@@ -27370,7 +27394,7 @@
       "popularity": {
         "downloads": 24
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-55-add-to-winner-decision-skill-5a4bd033",
@@ -27409,7 +27433,7 @@
       "popularity": {
         "downloads": 5
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-54-earnings-calendar-planner-skill-b901edb3",
@@ -27448,7 +27472,7 @@
       "popularity": {
         "downloads": 10
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-56-breakout-trade-execution-skill-98e4fe07",
@@ -27487,7 +27511,7 @@
       "popularity": {
         "downloads": 5
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-57-canslim-growth-scan-skill-20565766",
@@ -27526,7 +27550,7 @@
       "popularity": {
         "downloads": 6
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-58-dip-buy-decision-skill-d23081be",
@@ -27565,7 +27589,7 @@
       "popularity": {
         "downloads": 7
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-60-failed-breakout-exit-skill-ce10e41c",
@@ -27604,7 +27628,7 @@
       "popularity": {
         "downloads": 6
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-59-earnings-momentum-setup-skill-49c5fea0",
@@ -27643,7 +27667,7 @@
       "popularity": {
         "downloads": 3
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-61-pead-opportunity-skill-d30e5427",
@@ -27682,7 +27706,7 @@
       "popularity": {
         "downloads": 8
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-62-premarket-trade-checklist-skill-343d0939",
@@ -27721,7 +27745,7 @@
       "popularity": {
         "downloads": 3
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-63-trim-or-hold-decision-skill-b394f271",
@@ -27760,7 +27784,7 @@
       "popularity": {
         "downloads": 12
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-64-vcp-breakout-scan-skill-66041730",
@@ -27799,7 +27823,7 @@
       "popularity": {
         "downloads": 11
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-65-after-close-watchlist-recap-skill-faaffefb",
@@ -27838,7 +27862,7 @@
       "popularity": {
         "downloads": 10
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-66-buyback-program-reviewer-skill-e6de68b7",
@@ -27877,7 +27901,7 @@
       "popularity": {
         "downloads": 15
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-67-daily-watchlist-morning-brief-skill-a3bfe17c",
@@ -27916,7 +27940,7 @@
       "popularity": {
         "downloads": 18
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-68-dividend-change-explainer-skill-867301a1",
@@ -27955,7 +27979,7 @@
       "popularity": {
         "downloads": 6
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-69-dividend-growth-entry-skill-3a1a7e6d",
@@ -27994,7 +28018,7 @@
       "popularity": {
         "downloads": 8
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-70-earnings-preview-skill-60d74e01",
@@ -28033,7 +28057,7 @@
       "popularity": {
         "downloads": 12
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-71-earnings-reaction-interpreter-skill-02a714a0",
@@ -28072,7 +28096,7 @@
       "popularity": {
         "downloads": 6
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-72-gap-open-interpreter-skill-1d55e566",
@@ -28111,7 +28135,7 @@
       "popularity": {
         "downloads": 13
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-73-growth-quality-check-skill-bef5602a",
@@ -28150,7 +28174,7 @@
       "popularity": {
         "downloads": 14
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-74-hot-stock-quick-read-skill-94a2a92e",
@@ -28189,7 +28213,7 @@
       "popularity": {
         "downloads": 11
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-75-industry-chain-signal-skill-9a1c658f",
@@ -28228,7 +28252,7 @@
       "popularity": {
         "downloads": 8
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-76-intraday-abnormal-move-alert-skill-d7340c5b",
@@ -28267,7 +28291,7 @@
       "popularity": {
         "downloads": 9
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-77-macro-event-market-impact-skill-3681503a",
@@ -28306,7 +28330,7 @@
       "popularity": {
         "downloads": 10
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-78-management-quality-check-skill-126e6b38",
@@ -28345,7 +28369,7 @@
       "popularity": {
         "downloads": 22
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-79-market-breadth-health-skill-e5049355",
@@ -28384,7 +28408,7 @@
       "popularity": {
         "downloads": 6
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-80-market-sentiment-temperature-skill-c7f90427",
@@ -28423,7 +28447,7 @@
       "popularity": {
         "downloads": 19
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-81-northbound-capital-flow-skill-357af456",
@@ -28462,7 +28486,7 @@
       "popularity": {
         "downloads": 10
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-82-policy-headline-interpreter-skill-2fbb45e4",
@@ -28501,7 +28525,7 @@
       "popularity": {
         "downloads": 3
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-83-price-target-reach-alert-skill-ced5ef6b",
@@ -28540,7 +28564,7 @@
       "popularity": {
         "downloads": 10
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-84-shareholder-letter-digest-skill-ffd27816",
@@ -28579,7 +28603,7 @@
       "popularity": {
         "downloads": 5
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-85-stock-first-look-skill-3f099f66",
@@ -28621,7 +28645,7 @@
       "popularity": {
         "downloads": 11
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-86-stock-research-memo-writer-skill-43279d92",
@@ -28660,7 +28684,7 @@
       "popularity": {
         "downloads": 6
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-87-support-break-warning-skill-00c16b7f",
@@ -28699,7 +28723,7 @@
       "popularity": {
         "downloads": 14
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-88-theme-heat-tracker-skill-9e6507c6",
@@ -28738,7 +28762,7 @@
       "popularity": {
         "downloads": 16
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-89-trading-halt-resume-tracker-skill-ad1cb264",
@@ -28777,7 +28801,7 @@
       "popularity": {
         "downloads": 8
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-90-turnaround-story-validation-skill-e8dd397d",
@@ -28816,7 +28840,7 @@
       "popularity": {
         "downloads": 12
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-91-value-dividend-candidate-skill-e899e47d",
@@ -28855,7 +28879,7 @@
       "popularity": {
         "downloads": 15
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-92-volume-spike-reasoning-skill-d6e18625",
@@ -28894,7 +28918,7 @@
       "popularity": {
         "downloads": 22
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-93-watchlist-news-impact-digest-skill-183eba2d",
@@ -28933,7 +28957,7 @@
       "popularity": {
         "downloads": 10
       },
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-mcp-stock-data-eb3d9256",
@@ -28974,7 +28998,7 @@
       ],
       "source": "remote",
       "popularity": {},
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-mcp-fund-data-376db252",
@@ -29015,7 +29039,7 @@
       ],
       "source": "remote",
       "popularity": {},
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-mcp-index-data-c9b2bbb6",
@@ -29056,7 +29080,7 @@
       ],
       "source": "remote",
       "popularity": {},
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-mcp-bond-data-f40ad9d3",
@@ -29097,7 +29121,7 @@
       ],
       "source": "remote",
       "popularity": {},
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-mcp-financial-docs-6d576884",
@@ -29138,7 +29162,7 @@
       ],
       "source": "remote",
       "popularity": {},
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-mcp-economic-data-8159c222",
@@ -29179,7 +29203,7 @@
       ],
       "source": "remote",
       "popularity": {},
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
     },
     {
       "id": "wind-mcp-analytics-data-4fbaeb1f",
@@ -29220,7 +29244,1621 @@
       ],
       "source": "remote",
       "popularity": {},
-      "updatedAt": "2026-07-29T09:10:56.418Z"
+      "updatedAt": "2026-07-29T10:21:41.103Z"
+    },
+    {
+      "id": "tavily-official-mcp-io-github-tavily-ai-tavily-mcp-83cfbff3",
+      "upstreamId": "io.github.tavily-ai/tavily-mcp",
+      "type": "mcp",
+      "title": "Tavily MCP",
+      "description": "MCP server for advanced web search using Tavily",
+      "version": "0.2.21",
+      "category": "搜索与浏览",
+      "tags": [
+        "tavily",
+        "mcp",
+        "搜索与浏览",
+        "官方",
+        "精选",
+        "mcp-compatible"
+      ],
+      "badges": [
+        "官方",
+        "精选"
+      ],
+      "provider": "Tavily",
+      "registry": "tavily-official",
+      "resource": "https://github.com/tavily-ai/tavily-mcp",
+      "upstreamArtifactUrl": "https://github.com/tavily-ai/tavily-mcp",
+      "runtime": "mcp-streamable-http-or-stdio",
+      "permissions": [
+        "network:tavily",
+        "credential:TAVILY_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "MIT",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 2273
+      },
+      "updatedAt": "2026-07-25T10:16:46Z",
+      "compatibility": {
+        "clients": [
+          "mcp-compatible"
+        ]
+      }
+    },
+    {
+      "id": "tavily-official-skill-tavily-ai-skills-tavily-best-practices-7a2186ab",
+      "upstreamId": "tavily-best-practices",
+      "type": "skill",
+      "title": "Tavily Best Practices",
+      "description": "Tavily 官方 Tavily Best Practices Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "tavily",
+        "official",
+        "agent-skill",
+        "tavily-best-practices"
+      ],
+      "badges": [
+        "官方"
+      ],
+      "provider": "Tavily",
+      "registry": "tavily-official",
+      "resource": "https://github.com/tavily-ai/skills/tree/main/skills/tavily-best-practices",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/tavily-ai/skills/main/skills/tavily-best-practices/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:tavily",
+        "credential:TAVILY_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "MIT",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 436
+      },
+      "updatedAt": "2026-06-04T19:07:08Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "tavily-official-skill-tavily-ai-skills-tavily-cli-82185dbd",
+      "upstreamId": "tavily-cli",
+      "type": "skill",
+      "title": "Tavily Cli",
+      "description": "Tavily 官方 Tavily Cli Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "tavily",
+        "official",
+        "agent-skill",
+        "tavily-cli"
+      ],
+      "badges": [
+        "官方"
+      ],
+      "provider": "Tavily",
+      "registry": "tavily-official",
+      "resource": "https://github.com/tavily-ai/skills/tree/main/skills/tavily-cli",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/tavily-ai/skills/main/skills/tavily-cli/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:tavily",
+        "credential:TAVILY_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "MIT",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 436
+      },
+      "updatedAt": "2026-06-04T19:07:08Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "tavily-official-skill-tavily-ai-skills-tavily-crawl-18fb39a5",
+      "upstreamId": "tavily-crawl",
+      "type": "skill",
+      "title": "Tavily Crawl",
+      "description": "Tavily 官方 Tavily Crawl Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "tavily",
+        "official",
+        "agent-skill",
+        "tavily-crawl",
+        "精选"
+      ],
+      "badges": [
+        "官方",
+        "精选"
+      ],
+      "provider": "Tavily",
+      "registry": "tavily-official",
+      "resource": "https://github.com/tavily-ai/skills/tree/main/skills/tavily-crawl",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/tavily-ai/skills/main/skills/tavily-crawl/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:tavily",
+        "credential:TAVILY_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "MIT",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 436
+      },
+      "updatedAt": "2026-06-04T19:07:08Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "tavily-official-skill-tavily-ai-skills-tavily-dynamic-search-d5a09eaf",
+      "upstreamId": "tavily-dynamic-search",
+      "type": "skill",
+      "title": "Tavily Dynamic Search",
+      "description": "Tavily 官方 Tavily Dynamic Search Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "知识与研究",
+      "tags": [
+        "tavily",
+        "official",
+        "agent-skill",
+        "tavily-dynamic-search"
+      ],
+      "badges": [
+        "官方"
+      ],
+      "provider": "Tavily",
+      "registry": "tavily-official",
+      "resource": "https://github.com/tavily-ai/skills/tree/main/skills/tavily-dynamic-search",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/tavily-ai/skills/main/skills/tavily-dynamic-search/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:tavily",
+        "credential:TAVILY_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "MIT",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 436
+      },
+      "updatedAt": "2026-06-04T19:07:08Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "tavily-official-skill-tavily-ai-skills-tavily-extract-221c0c7b",
+      "upstreamId": "tavily-extract",
+      "type": "skill",
+      "title": "Tavily Extract",
+      "description": "Tavily 官方 Tavily Extract Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "tavily",
+        "official",
+        "agent-skill",
+        "tavily-extract",
+        "精选"
+      ],
+      "badges": [
+        "官方",
+        "精选"
+      ],
+      "provider": "Tavily",
+      "registry": "tavily-official",
+      "resource": "https://github.com/tavily-ai/skills/tree/main/skills/tavily-extract",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/tavily-ai/skills/main/skills/tavily-extract/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:tavily",
+        "credential:TAVILY_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "MIT",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 436
+      },
+      "updatedAt": "2026-06-04T19:07:08Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "tavily-official-skill-tavily-ai-skills-tavily-map-e50e75a5",
+      "upstreamId": "tavily-map",
+      "type": "skill",
+      "title": "Tavily Map",
+      "description": "Tavily 官方 Tavily Map Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "tavily",
+        "official",
+        "agent-skill",
+        "tavily-map"
+      ],
+      "badges": [
+        "官方"
+      ],
+      "provider": "Tavily",
+      "registry": "tavily-official",
+      "resource": "https://github.com/tavily-ai/skills/tree/main/skills/tavily-map",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/tavily-ai/skills/main/skills/tavily-map/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:tavily",
+        "credential:TAVILY_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "MIT",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 436
+      },
+      "updatedAt": "2026-06-04T19:07:08Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "tavily-official-skill-tavily-ai-skills-tavily-research-a7a38403",
+      "upstreamId": "tavily-research",
+      "type": "skill",
+      "title": "Tavily Research",
+      "description": "Tavily 官方 Tavily Research Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "知识与研究",
+      "tags": [
+        "tavily",
+        "official",
+        "agent-skill",
+        "tavily-research",
+        "精选"
+      ],
+      "badges": [
+        "官方",
+        "精选"
+      ],
+      "provider": "Tavily",
+      "registry": "tavily-official",
+      "resource": "https://github.com/tavily-ai/skills/tree/main/skills/tavily-research",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/tavily-ai/skills/main/skills/tavily-research/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:tavily",
+        "credential:TAVILY_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "MIT",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 436
+      },
+      "updatedAt": "2026-06-04T19:07:08Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "tavily-official-skill-tavily-ai-skills-tavily-search-b6870fe2",
+      "upstreamId": "tavily-search",
+      "type": "skill",
+      "title": "Tavily Search",
+      "description": "Tavily 官方 Tavily Search Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "知识与研究",
+      "tags": [
+        "tavily",
+        "official",
+        "agent-skill",
+        "tavily-search",
+        "精选"
+      ],
+      "badges": [
+        "官方",
+        "精选"
+      ],
+      "provider": "Tavily",
+      "registry": "tavily-official",
+      "resource": "https://github.com/tavily-ai/skills/tree/main/skills/tavily-search",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/tavily-ai/skills/main/skills/tavily-search/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:tavily",
+        "credential:TAVILY_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "MIT",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 436
+      },
+      "updatedAt": "2026-06-04T19:07:08Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "tavily-official-plugin-tavily-skills-plugin-2ff70030",
+      "upstreamId": "tavily-skills-plugin",
+      "type": "plugin",
+      "title": "Tavily Agent Skills Plugin",
+      "description": "Build AI applications with real-time web data using Tavily search, extract, crawl, and research APIs.",
+      "version": "1.0.0",
+      "category": "知识与研究",
+      "tags": [
+        "tavily",
+        "plugin",
+        "知识与研究",
+        "官方",
+        "精选",
+        "claude-code",
+        "adapter-required:codex",
+        "adapter-required:opencode"
+      ],
+      "badges": [
+        "官方",
+        "精选"
+      ],
+      "provider": "Tavily",
+      "registry": "tavily-official",
+      "resource": "https://github.com/tavily-ai/skills",
+      "upstreamArtifactUrl": "https://github.com/tavily-ai/skills",
+      "runtime": "claude-plugin-with-agent-skills",
+      "permissions": [
+        "network:tavily",
+        "credential:TAVILY_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "MIT",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 436
+      },
+      "updatedAt": "2026-06-04T19:07:08Z",
+      "compatibility": {
+        "clients": [
+          "claude-code",
+          "adapter-required:codex",
+          "adapter-required:opencode"
+        ]
+      }
+    },
+    {
+      "id": "tavily-official-plugin-tavily-cursor-plugin-edd73fa2",
+      "upstreamId": "tavily-cursor-plugin",
+      "type": "plugin",
+      "title": "Tavily",
+      "description": "Web search, content extraction, crawling, deep research, and URL discovery powered by tvly CLI.",
+      "version": "2.0.0",
+      "category": "知识与研究",
+      "tags": [
+        "tavily",
+        "plugin",
+        "知识与研究",
+        "官方",
+        "cursor"
+      ],
+      "badges": [
+        "官方"
+      ],
+      "provider": "Tavily",
+      "registry": "tavily-official",
+      "resource": "https://github.com/tavily-ai/tavily-cursor-plugin",
+      "upstreamArtifactUrl": "https://github.com/tavily-ai/tavily-cursor-plugin",
+      "runtime": "cursor-plugin",
+      "permissions": [
+        "network:tavily",
+        "credential:TAVILY_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "MIT",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 1
+      },
+      "updatedAt": "2026-07-28T14:58:50Z",
+      "compatibility": {
+        "clients": [
+          "cursor"
+        ]
+      }
+    },
+    {
+      "id": "tavily-official-plugin-tavily-grok-plugin-e8426798",
+      "upstreamId": "tavily-grok-plugin",
+      "type": "plugin",
+      "title": "Tavily Grok Plugin",
+      "description": "Web search, extraction, crawling, discovery, and deep research for Grok Build via Tavily.",
+      "version": "1.0.0",
+      "category": "知识与研究",
+      "tags": [
+        "tavily",
+        "plugin",
+        "知识与研究",
+        "官方",
+        "grok-build"
+      ],
+      "badges": [
+        "官方"
+      ],
+      "provider": "Tavily",
+      "registry": "tavily-official",
+      "resource": "https://github.com/tavily-ai/tavily-grok-plugin",
+      "upstreamArtifactUrl": "https://github.com/tavily-ai/tavily-grok-plugin",
+      "runtime": "grok-plugin",
+      "permissions": [
+        "network:tavily",
+        "credential:TAVILY_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "MIT",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 1
+      },
+      "updatedAt": "2026-07-17T18:23:42Z",
+      "compatibility": {
+        "clients": [
+          "grok-build"
+        ]
+      }
+    },
+    {
+      "id": "tavily-official-cli-tavily-cli-95a12f3e",
+      "upstreamId": "tavily-cli",
+      "type": "cli",
+      "title": "Tavily CLI",
+      "description": "Search, extract, crawl, map, and research from the command line.",
+      "version": "0.1.5",
+      "category": "知识与研究",
+      "tags": [
+        "tavily",
+        "cli",
+        "知识与研究",
+        "官方",
+        "精选",
+        "shell",
+        "managed-sandbox"
+      ],
+      "badges": [
+        "官方",
+        "精选"
+      ],
+      "provider": "Tavily",
+      "registry": "tavily-official",
+      "resource": "https://github.com/tavily-ai/tavily-cli",
+      "upstreamArtifactUrl": "https://github.com/tavily-ai/tavily-cli",
+      "runtime": "python-cli:tvly",
+      "permissions": [
+        "network:tavily",
+        "credential:TAVILY_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "MIT",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 11
+      },
+      "updatedAt": "2026-07-20T13:31:53Z",
+      "compatibility": {
+        "clients": [
+          "shell",
+          "managed-sandbox"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-mcp-io-github-firecrawl-firecrawl-mcp-server-0f5adda4",
+      "upstreamId": "io.github.firecrawl/firecrawl-mcp-server",
+      "type": "mcp",
+      "title": "Firecrawl MCP",
+      "description": "Official Firecrawl MCP server for web search, scraping, interaction, batch processing, and extraction.",
+      "version": "3.23.0",
+      "category": "搜索与浏览",
+      "tags": [
+        "firecrawl",
+        "mcp",
+        "搜索与浏览",
+        "官方",
+        "精选",
+        "mcp-compatible"
+      ],
+      "badges": [
+        "官方",
+        "精选"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/firecrawl-mcp-server",
+      "upstreamArtifactUrl": "https://github.com/firecrawl/firecrawl-mcp-server",
+      "runtime": "mcp-streamable-http-or-stdio",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "MIT",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 7076
+      },
+      "updatedAt": "2026-07-29T09:36:40Z",
+      "compatibility": {
+        "clients": [
+          "mcp-compatible"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-skill-firecrawl-skills-firecrawl-build-8b031bc0",
+      "upstreamId": "firecrawl-build",
+      "type": "skill",
+      "title": "Firecrawl Build",
+      "description": "Firecrawl 官方 Firecrawl Build Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "firecrawl",
+        "official",
+        "agent-skill",
+        "firecrawl-build"
+      ],
+      "badges": [
+        "官方"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/skills/tree/main/skills/firecrawl-build",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/firecrawl/skills/main/skills/firecrawl-build/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "ISC",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 54
+      },
+      "updatedAt": "2026-07-20T10:22:20Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-skill-firecrawl-skills-firecrawl-build-interact-c220ba13",
+      "upstreamId": "firecrawl-build-interact",
+      "type": "skill",
+      "title": "Firecrawl Build Interact",
+      "description": "Firecrawl 官方 Firecrawl Build Interact Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "firecrawl",
+        "official",
+        "agent-skill",
+        "firecrawl-build-interact"
+      ],
+      "badges": [
+        "官方"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/skills/tree/main/skills/firecrawl-build-interact",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/firecrawl/skills/main/skills/firecrawl-build-interact/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "ISC",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 54
+      },
+      "updatedAt": "2026-07-20T10:22:20Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-skill-firecrawl-skills-firecrawl-build-onboarding-01f26810",
+      "upstreamId": "firecrawl-build-onboarding",
+      "type": "skill",
+      "title": "Firecrawl Build Onboarding",
+      "description": "Firecrawl 官方 Firecrawl Build Onboarding Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "firecrawl",
+        "official",
+        "agent-skill",
+        "firecrawl-build-onboarding"
+      ],
+      "badges": [
+        "官方"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/skills/tree/main/skills/firecrawl-build-onboarding",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/firecrawl/skills/main/skills/firecrawl-build-onboarding/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "ISC",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 54
+      },
+      "updatedAt": "2026-07-20T10:22:20Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-skill-firecrawl-skills-firecrawl-build-scrape-6e9a43bb",
+      "upstreamId": "firecrawl-build-scrape",
+      "type": "skill",
+      "title": "Firecrawl Build Scrape",
+      "description": "Firecrawl 官方 Firecrawl Build Scrape Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "firecrawl",
+        "official",
+        "agent-skill",
+        "firecrawl-build-scrape",
+        "精选"
+      ],
+      "badges": [
+        "官方",
+        "精选"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/skills/tree/main/skills/firecrawl-build-scrape",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/firecrawl/skills/main/skills/firecrawl-build-scrape/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "ISC",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 54
+      },
+      "updatedAt": "2026-07-20T10:22:20Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-skill-firecrawl-skills-firecrawl-build-search-b5207e03",
+      "upstreamId": "firecrawl-build-search",
+      "type": "skill",
+      "title": "Firecrawl Build Search",
+      "description": "Firecrawl 官方 Firecrawl Build Search Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "知识与研究",
+      "tags": [
+        "firecrawl",
+        "official",
+        "agent-skill",
+        "firecrawl-build-search",
+        "精选"
+      ],
+      "badges": [
+        "官方",
+        "精选"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/skills/tree/main/skills/firecrawl-build-search",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/firecrawl/skills/main/skills/firecrawl-build-search/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "ISC",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 54
+      },
+      "updatedAt": "2026-07-20T10:22:20Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-skill-firecrawl-skills-firecrawl-research-index-3d8b6c8c",
+      "upstreamId": "firecrawl-research-index",
+      "type": "skill",
+      "title": "Firecrawl Research Index",
+      "description": "Firecrawl 官方 Firecrawl Research Index Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "知识与研究",
+      "tags": [
+        "firecrawl",
+        "official",
+        "agent-skill",
+        "firecrawl-research-index",
+        "精选"
+      ],
+      "badges": [
+        "官方",
+        "精选"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/skills/tree/main/skills/firecrawl-research-index",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/firecrawl/skills/main/skills/firecrawl-research-index/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "ISC",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 54
+      },
+      "updatedAt": "2026-07-20T10:22:20Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-skill-firecrawl-cli-firecrawl-agent-e6cd9db8",
+      "upstreamId": "firecrawl-agent",
+      "type": "skill",
+      "title": "Firecrawl Agent",
+      "description": "Firecrawl 官方 Firecrawl Agent Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "firecrawl",
+        "official",
+        "agent-skill",
+        "firecrawl-agent"
+      ],
+      "badges": [
+        "官方"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/cli/tree/main/skills/firecrawl-agent",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/firecrawl/cli/main/skills/firecrawl-agent/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "ISC",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 548
+      },
+      "updatedAt": "2026-07-27T19:20:46Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-skill-firecrawl-cli-firecrawl-cli-5b4c8327",
+      "upstreamId": "firecrawl-cli",
+      "type": "skill",
+      "title": "Firecrawl Cli",
+      "description": "Firecrawl 官方 Firecrawl Cli Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "firecrawl",
+        "official",
+        "agent-skill",
+        "firecrawl-cli"
+      ],
+      "badges": [
+        "官方"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/cli/tree/main/skills/firecrawl-cli",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/firecrawl/cli/main/skills/firecrawl-cli/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "ISC",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 548
+      },
+      "updatedAt": "2026-07-27T19:20:46Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-skill-firecrawl-cli-firecrawl-crawl-d819ae48",
+      "upstreamId": "firecrawl-crawl",
+      "type": "skill",
+      "title": "Firecrawl Crawl",
+      "description": "Firecrawl 官方 Firecrawl Crawl Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "firecrawl",
+        "official",
+        "agent-skill",
+        "firecrawl-crawl",
+        "精选"
+      ],
+      "badges": [
+        "官方",
+        "精选"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/cli/tree/main/skills/firecrawl-crawl",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/firecrawl/cli/main/skills/firecrawl-crawl/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "ISC",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 548
+      },
+      "updatedAt": "2026-07-27T19:20:46Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-skill-firecrawl-cli-firecrawl-download-93a640db",
+      "upstreamId": "firecrawl-download",
+      "type": "skill",
+      "title": "Firecrawl Download",
+      "description": "Firecrawl 官方 Firecrawl Download Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "firecrawl",
+        "official",
+        "agent-skill",
+        "firecrawl-download"
+      ],
+      "badges": [
+        "官方"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/cli/tree/main/skills/firecrawl-download",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/firecrawl/cli/main/skills/firecrawl-download/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "ISC",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 548
+      },
+      "updatedAt": "2026-07-27T19:20:46Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-skill-firecrawl-cli-firecrawl-interact-b63a60ce",
+      "upstreamId": "firecrawl-interact",
+      "type": "skill",
+      "title": "Firecrawl Interact",
+      "description": "Firecrawl 官方 Firecrawl Interact Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "firecrawl",
+        "official",
+        "agent-skill",
+        "firecrawl-interact",
+        "精选"
+      ],
+      "badges": [
+        "官方",
+        "精选"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/cli/tree/main/skills/firecrawl-interact",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/firecrawl/cli/main/skills/firecrawl-interact/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "ISC",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 548
+      },
+      "updatedAt": "2026-07-27T19:20:46Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-skill-firecrawl-cli-firecrawl-map-e9137c36",
+      "upstreamId": "firecrawl-map",
+      "type": "skill",
+      "title": "Firecrawl Map",
+      "description": "Firecrawl 官方 Firecrawl Map Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "firecrawl",
+        "official",
+        "agent-skill",
+        "firecrawl-map"
+      ],
+      "badges": [
+        "官方"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/cli/tree/main/skills/firecrawl-map",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/firecrawl/cli/main/skills/firecrawl-map/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "ISC",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 548
+      },
+      "updatedAt": "2026-07-27T19:20:46Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-skill-firecrawl-cli-firecrawl-monitor-75ccc51d",
+      "upstreamId": "firecrawl-monitor",
+      "type": "skill",
+      "title": "Firecrawl Monitor",
+      "description": "Firecrawl 官方 Firecrawl Monitor Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "firecrawl",
+        "official",
+        "agent-skill",
+        "firecrawl-monitor"
+      ],
+      "badges": [
+        "官方"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/cli/tree/main/skills/firecrawl-monitor",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/firecrawl/cli/main/skills/firecrawl-monitor/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "ISC",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 548
+      },
+      "updatedAt": "2026-07-27T19:20:46Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-skill-firecrawl-cli-firecrawl-parse-e58a1a9f",
+      "upstreamId": "firecrawl-parse",
+      "type": "skill",
+      "title": "Firecrawl Parse",
+      "description": "Firecrawl 官方 Firecrawl Parse Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "firecrawl",
+        "official",
+        "agent-skill",
+        "firecrawl-parse"
+      ],
+      "badges": [
+        "官方"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/cli/tree/main/skills/firecrawl-parse",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/firecrawl/cli/main/skills/firecrawl-parse/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "ISC",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 548
+      },
+      "updatedAt": "2026-07-27T19:20:46Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-skill-firecrawl-cli-firecrawl-scrape-23bee79f",
+      "upstreamId": "firecrawl-scrape",
+      "type": "skill",
+      "title": "Firecrawl Scrape",
+      "description": "Firecrawl 官方 Firecrawl Scrape Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "Agent 编排",
+      "tags": [
+        "firecrawl",
+        "official",
+        "agent-skill",
+        "firecrawl-scrape",
+        "精选"
+      ],
+      "badges": [
+        "官方",
+        "精选"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/cli/tree/main/skills/firecrawl-scrape",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/firecrawl/cli/main/skills/firecrawl-scrape/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "ISC",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 548
+      },
+      "updatedAt": "2026-07-27T19:20:46Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-skill-firecrawl-cli-firecrawl-search-dae6be7d",
+      "upstreamId": "firecrawl-search",
+      "type": "skill",
+      "title": "Firecrawl Search",
+      "description": "Firecrawl 官方 Firecrawl Search Agent Skill；提供可移植的 SKILL.md 工作流。",
+      "version": "main",
+      "category": "知识与研究",
+      "tags": [
+        "firecrawl",
+        "official",
+        "agent-skill",
+        "firecrawl-search",
+        "精选"
+      ],
+      "badges": [
+        "官方",
+        "精选"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/cli/tree/main/skills/firecrawl-search",
+      "upstreamArtifactUrl": "https://raw.githubusercontent.com/firecrawl/cli/main/skills/firecrawl-search/SKILL.md",
+      "runtime": "agent-skill/SKILL.md",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "ISC",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider",
+        "web-content-untrusted",
+        "human-review-required"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 548
+      },
+      "updatedAt": "2026-07-27T19:20:46Z",
+      "compatibility": {
+        "standard": "agentskills-compatible",
+        "clients": [
+          "codex",
+          "claude-code",
+          "opencode",
+          "agents-compatible"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-plugin-agent-browser-plugin-firecrawl-ae8aa75b",
+      "upstreamId": "agent-browser-plugin-firecrawl",
+      "type": "plugin",
+      "title": "Firecrawl Agent Browser Plugin",
+      "description": "Firecrawl plugin for agent-browser: cloud browser provider plus scrape, search, crawl, and map commands.",
+      "version": "0.1.0",
+      "category": "知识与研究",
+      "tags": [
+        "firecrawl",
+        "plugin",
+        "知识与研究",
+        "官方",
+        "精选",
+        "agent-browser"
+      ],
+      "badges": [
+        "官方",
+        "精选"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/agent-browser-plugin-firecrawl",
+      "upstreamArtifactUrl": "https://github.com/firecrawl/agent-browser-plugin-firecrawl",
+      "runtime": "agent-browser.plugin.v1",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "MIT",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 6
+      },
+      "updatedAt": "2026-06-17T00:18:30Z",
+      "compatibility": {
+        "clients": [
+          "agent-browser"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-plugin-firecrawl-grok-plugin-2c36ffa1",
+      "upstreamId": "firecrawl-grok-plugin",
+      "type": "plugin",
+      "title": "Firecrawl Grok Plugin",
+      "description": "Scrape, search, crawl, map, and extract the web via Firecrawl MCP or CLI skills.",
+      "version": "1.1.0",
+      "category": "知识与研究",
+      "tags": [
+        "firecrawl",
+        "plugin",
+        "知识与研究",
+        "官方",
+        "grok-build"
+      ],
+      "badges": [
+        "官方"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/firecrawl-grok-plugin",
+      "upstreamArtifactUrl": "https://github.com/firecrawl/firecrawl-grok-plugin",
+      "runtime": "grok-plugin",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "AGPL-3.0",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 7
+      },
+      "updatedAt": "2026-06-12T06:56:02Z",
+      "compatibility": {
+        "clients": [
+          "grok-build"
+        ]
+      }
+    },
+    {
+      "id": "firecrawl-official-cli-firecrawl-cli-ca936184",
+      "upstreamId": "firecrawl-cli",
+      "type": "cli",
+      "title": "Firecrawl CLI",
+      "description": "Command-line interface for Firecrawl. Scrape, crawl, and extract data from websites.",
+      "version": "1.19.27",
+      "category": "数据分析",
+      "tags": [
+        "firecrawl",
+        "cli",
+        "数据分析",
+        "官方",
+        "精选",
+        "shell",
+        "managed-sandbox"
+      ],
+      "badges": [
+        "官方",
+        "精选"
+      ],
+      "provider": "Firecrawl",
+      "registry": "firecrawl-official",
+      "resource": "https://github.com/firecrawl/cli",
+      "upstreamArtifactUrl": "https://github.com/firecrawl/cli",
+      "runtime": "node-cli:firecrawl",
+      "permissions": [
+        "network:firecrawl",
+        "credential:FIRECRAWL_API_KEY"
+      ],
+      "access": "account-and-api-key",
+      "license": "ISC",
+      "verification": "publisher-repository",
+      "risk": [
+        "external-provider"
+      ],
+      "source": "remote",
+      "popularity": {
+        "stars": 548
+      },
+      "updatedAt": "2026-07-27T19:20:46Z",
+      "compatibility": {
+        "clients": [
+          "shell",
+          "managed-sandbox"
+        ]
+      }
     }
   ]
 }
