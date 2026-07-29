@@ -4,6 +4,7 @@ import { dirname, join, relative, resolve, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 import matter from "gray-matter";
 import { z } from "zod";
+import { isFeaturedWindSkill } from "./wind-curation.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const catalogRoot = join(root, "catalog");
@@ -128,17 +129,11 @@ function localCategory(type, text) {
   return classify(type, text);
 }
 
-const featuredWindSkills = new Set([
-  "万得金融数据", "财报解读", "DCF 估值模型", "个股投资逻辑研究", "上市公司一页纸投资报告",
-  "金融事实核验", "宏观数据解读", "基金筛选与投资建议", "债券利率走势研判", "全球上市公司财报点评"
-]);
-
 export function normalizeImported(item) {
   if (!entryType.safeParse(item.type).success) return undefined;
-  const featured = item.registry === "wind-aifin" && (item.type === "mcp" || featuredWindSkills.has(item.title));
+  const featured = item.registry === "wind-aifin" && (item.type === "mcp" || isFeaturedWindSkill(item));
   const badges = [...new Set([
     ...(item.badges ?? []),
-    ...(item.registry === "wind-aifin" ? ["官方"] : []),
     ...(featured ? ["精选"] : [])
   ])];
   const text = `${item.title} ${item.description} ${item.category} ${item.tags.join(" ")}`;

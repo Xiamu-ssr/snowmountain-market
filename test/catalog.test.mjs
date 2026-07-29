@@ -6,7 +6,7 @@ import { buildCatalog } from "../scripts/build-catalog.mjs";
 test("builds the reviewed and imported catalog with provenance", async () => {
   const catalog = await buildCatalog();
   assert.equal(catalog.format, "snowmountain-market-catalog/v3");
-  assert.ok(catalog.items.length >= 800);
+  assert.ok(catalog.items.length >= 700);
   assert.deepEqual(catalog.items.slice(0, 2).map((item) => item.id), [
     "filesystem-readonly-mcp",
     "workspace-researcher"
@@ -33,6 +33,9 @@ test("builds the reviewed and imported catalog with provenance", async () => {
   assert.equal(detail.verification, "namespace-verified");
   assert.ok(detail.risk.includes("not-security-audited"));
   const featuredWind = catalog.items.filter((item) => item.registry === "wind-aifin" && item.badges?.includes("精选"));
-  assert.ok(featuredWind.length >= 10);
-  assert.ok(featuredWind.every((item) => item.tags.includes("官方") && item.tags.includes("精选")));
+  assert.equal(featuredWind.filter((item) => item.type === "skill").length, 10);
+  assert.equal(featuredWind.filter((item) => item.type === "mcp").length, 7);
+  assert.ok(featuredWind.every((item) => item.tags.includes("精选")));
+  assert.ok(catalog.items.some((item) => item.upstreamId === "wind-find-finance-skill" && item.badges.includes("官方") && item.badges.includes("精选")));
+  assert.ok(catalog.items.some((item) => item.upstreamId === "earnings-analysis" && item.badges.includes("精选") && !item.badges.includes("官方")));
 });

@@ -27,8 +27,8 @@ Git-first 只说明**事实源和变更流程**，不等于“不需要程序或
 | 来源 | 当前快照 | 接入边界 |
 |---|---:|---|
 | ClawHub | 400 Skills | 使用公开目录 API，只抓取 `nonSuspiciousOnly` 元数据；仍标记为未经过雪山安全审查 |
-| Official MCP Registry | 302 MCP Servers | 只收录 `active + latest`；命名空间验证不等于服务端代码安全 |
-| Wind AIFin Market | 90 Skills、7 MCP；另有 1 条上游 Agent 元数据不纳入 Catalog | 使用公开市场元数据和官方 `skill.md`；重点能力标记“官方 / 精选”，Key 与安装仍由 Wind 管理 |
+| Official MCP Registry | 275 MCP Servers | 只收录当前 `active + latest` 快照；命名空间验证不等于服务端代码安全 |
+| Wind AIFin Market | 90 个市场 Skill、1 个官方发现 Skill、7 个数据域 MCP 投影 | 以官方 `skill.md` 与 `wind-skills` 为准；“官方”只表示 Wind 发布，“精选”是雪山对数据底座和核心研究工作流的选择 |
 | skills.sh | 来源已登记 | API 要求 Vercel OIDC，未绕过认证抓取 |
 | Anthropic Agent Skills | 来源已登记 | 子目录许可证不同；由上游目录覆盖，未重复复制内容 |
 

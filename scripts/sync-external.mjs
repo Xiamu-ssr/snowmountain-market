@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { mkdir, writeFile } from "node:fs/promises";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { isFeaturedWindSkill, windMcpEntries } from "./wind-curation.mjs";
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const output = resolve(root, "imports/external.json");
@@ -89,11 +90,6 @@ function classify(type, text) {
   ];
   return rules.find(([, pattern]) => pattern.test(value))?.[0] ?? "通用";
 }
-
-const featuredWindSkills = new Set([
-  "万得金融数据", "财报解读", "DCF 估值模型", "个股投资逻辑研究", "上市公司一页纸投资报告",
-  "金融事实核验", "宏观数据解读", "基金筛选与投资建议", "债券利率走势研判", "全球上市公司财报点评"
-]);
 
 async function fetchJson(url, init) {
   const response = await fetch(url, { ...init, signal: AbortSignal.timeout(30_000) });
@@ -199,16 +195,6 @@ async function syncMcp(maxPages = Number(process.env.MCP_MAX_PAGES ?? 10)) {
   });
 }
 
-const windMcpEntries = [
-  ["stock", "万得股票数据服务", "股票", "提供全球股票档案、行情、技术指标、财务、公司事件与风险数据。", 9],
-  ["bond", "万得债券数据服务", "债券", "提供债券档案、发行主体、行情估值、风险收益、财务与特殊品种数据。", 4],
-  ["fund", "万得基金数据服务", "基金", "提供基金档案、持仓、资产配置、业绩、持有人与管理公司数据。", 9],
-  ["index", "万得指数数据服务", "指数", "提供指数档案、行情、分钟价格、技术指标、估值与成份股分析。", 6],
-  ["macro", "万得宏观经济数据服务", "宏观", "提供国内外宏观经济、货币政策、行业指标与时间序列数据。", 1],
-  ["document", "万得金融文档检索服务", "金融文档", "检索财经新闻与发行人公告、披露文件。", 2],
-  ["calculation", "万得金融数据计算服务", "金融计算", "提供金融指标聚合、跨实体计算、排名和数据变换。", 1]
-];
-
 async function syncWind() {
   const payload = await fetchJson("https://aifinmarket.wind.com.cn/Wind.AIMarket.Service/mcp-config/skills", {
     method: "POST",
@@ -218,21 +204,23 @@ async function syncWind() {
   if (payload.code !== 0 || !Array.isArray(payload.data?.records)) throw new Error("Wind returned an invalid public skill catalog");
   const skills = payload.data.records.map((skill) => {
     const title = skill.nameCn || skill.nameEn || skill.name;
-    const featured = featuredWindSkills.has(title);
+    const upstreamId = String(skill.name || skill.id);
+    const featured = isFeaturedWindSkill({ upstreamId });
+    const publisherOfficial = ["Wind", "Wind Alice"].includes(skill.source);
     return {
       id: stableId("wind", `${skill.id}:${skill.name}`),
-      upstreamId: String(skill.id),
+      upstreamId,
       type: "skill",
       title,
       description: skill.descriptionCn || skill.descriptionEn || "Wind AIFin Market Skill",
       version: String(skill.version || "latest"),
       category: "金融研究",
-      tags: compactTags(["wind", "finance", skill.categoryCn, skill.subCategoryCn, skill.source, "官方", ...(featured ? ["精选"] : [])]),
-      badges: ["官方", ...(featured ? ["精选"] : [])],
+      tags: compactTags(["wind", "finance", skill.categoryCn, skill.subCategoryCn, skill.source, ...(publisherOfficial ? ["官方"] : []), ...(featured ? ["精选"] : [])]),
+      badges: [...(publisherOfficial ? ["官方"] : []), ...(featured ? ["精选"] : [])],
       provider: skill.source || "Wind AIFin Market",
       registry: "wind-aifin",
-      resource: "https://aifinmarket.wind.com.cn/#/market",
-      upstreamArtifactUrl: "https://aifinmarket.wind.com.cn/skill.md",
+      resource: `https://github.com/Wind-Information-Co-Ltd/wind-skills/tree/main/skills/${upstreamId}`,
+      upstreamArtifactUrl: `https://raw.githubusercontent.com/Wind-Information-Co-Ltd/wind-skills/main/skills/${upstreamId}/SKILL.md`,
       runtime: "agent-skill/SKILL.md",
       permissions: ["network:wind-provider", "credential:WIND_API_KEY"],
       access: "account-and-api-key",
@@ -244,6 +232,17 @@ async function syncWind() {
       updatedAt: syncedAt
     };
   });
+  const discovery = {
+    id: stableId("wind", "wind-find-finance-skill"), upstreamId: "wind-find-finance-skill", type: "skill",
+    title: "Wind 金融能力发现", description: "Wind 官方金融能力入口：按问题发现并安装数据底座与专业研究工作流。",
+    version: "latest", category: "金融研究", tags: ["wind", "finance", "能力发现", "官方", "精选"], badges: ["官方", "精选"],
+    provider: "Wind", registry: "wind-aifin",
+    resource: "https://github.com/Wind-Information-Co-Ltd/wind-skills/tree/main/skills/wind-find-finance-skill",
+    upstreamArtifactUrl: "https://raw.githubusercontent.com/Wind-Information-Co-Ltd/wind-skills/main/skills/wind-find-finance-skill/SKILL.md",
+    runtime: "agent-skill/SKILL.md", permissions: ["network:wind-skills", "filesystem:skill-install"], access: "public",
+    license: "provider-terms", verification: "publisher-listed", risk: ["external-provider", "human-review-required"],
+    source: "remote", popularity: {}, updatedAt: syncedAt
+  };
   const mcps = windMcpEntries.map(([slug, title, category, description, toolCount]) => ({
     id: stableId("wind-mcp", slug), upstreamId: slug, type: "mcp", title, description,
     version: "provider-managed", category: "金融数据",
@@ -254,7 +253,7 @@ async function syncWind() {
     license: "provider-terms", verification: "publisher-listed",
     risk: ["financial-data", "external-provider"], source: "remote", popularity: {}, updatedAt: syncedAt
   }));
-  return [...skills, ...mcps];
+  return [discovery, ...skills, ...mcps];
 }
 
 const groups = await Promise.all([syncClawHub(), syncMcp(), syncWind()]);
