@@ -1,0 +1,31 @@
+dsl: snowmountain.spec/v1
+kind: contract
+metadata:
+  id: market.catalog-taxonomy
+  title: 雪山 Market 资产分类契约
+  status: verified
+  owners: [market]
+intent:
+  summary: 把发行资产、类内分类、标签和来源溯源分成四个互不混淆的维度。
+contract:
+  format: snowmountain-market-catalog/v3
+  primaryTypes: [mcp, skill, plugin, cli]
+  secondaryCategory:
+    scope: within-primary-type
+    cardinality: exactly-one
+  tags:
+    cardinality: many
+    examples: [官方, 精选, 雪山精选]
+  provenance:
+    fields: [registry, provider, resource, source]
+    affectsClassification: false
+  excludedPrimaryTypes:
+    tool: runtime-call-unit
+    agent: control-plane-resource
+verification:
+  tests:
+    - test/catalog.test.mjs
+  assertions:
+    - { id: four-types, assertion: Catalog 条目类型只能是 MCP、Skill、Plugin、CLI。 }
+    - { id: scoped-category, assertion: 二级分类统计必须按一级类型分别生成。 }
+    - { id: provenance-only, assertion: 来源渠道不能作为类型或二级分类。 }

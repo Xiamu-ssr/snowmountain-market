@@ -66,21 +66,34 @@ function compactTags(values) {
   return [...new Set(values.flatMap((value) => String(value ?? "").split(/[,/|]/)).map((value) => value.trim().toLowerCase()).filter(Boolean))].slice(0, 12);
 }
 
-function classify(text, fallback = "通用") {
+function classify(type, text) {
   const value = String(text).toLowerCase();
-  const rules = [
-    ["金融与投研", /finance|financial|stock|fund|bond|trading|portfolio|金融|股票|基金|债券|投研|估值|宏观/],
-    ["开发工程", /developer|development|coding|code|github|gitlab|database|sql|测试|代码|开发/],
-    ["数据与知识", /data|search|knowledge|document|filesystem|research|数据|搜索|知识|文档|研究/],
-    ["效率与协作", /productivity|project|task|calendar|notion|linear|slack|协作|任务|日历|办公/],
-    ["云与基础设施", /cloud|kubernetes|docker|aws|azure|gcp|server|infra|云|容器|服务器/],
-    ["安全与治理", /security|audit|policy|identity|auth|安全|审计|权限|身份/],
-    ["内容与媒体", /image|video|audio|media|design|pdf|presentation|内容|图像|视频|音频|设计/],
-    ["AI 与模型", /agent|model|llm|prompt|inference|ai\b|智能体|模型|提示词/],
-    ["通信与客户", /email|message|crm|customer|communication|邮件|消息|客户/]
+  const rules = type === "mcp" ? [
+    ["金融数据", /finance|financial|stock|fund|bond|金融|股票|基金|债券|宏观/],
+    ["开发工具", /developer|code|github|gitlab|git\b|测试|代码|开发/],
+    ["数据库", /database|sql|postgres|mysql|redis|数据库/],
+    ["文件与知识", /document|filesystem|knowledge|file|文档|文件|知识/],
+    ["搜索与浏览", /search|browser|crawl|搜索|浏览|检索/],
+    ["协作 SaaS", /notion|linear|slack|calendar|email|crm|协作|日历|邮件/],
+    ["云与基础设施", /cloud|kubernetes|docker|aws|azure|gcp|server|云|容器|服务器/],
+    ["安全与身份", /security|audit|identity|auth|安全|审计|身份/]
+  ] : [
+    ["金融研究", /finance|financial|stock|fund|bond|trading|金融|股票|基金|债券|投研|估值|宏观|财报/],
+    ["开发工作流", /developer|coding|code|github|gitlab|测试|代码|开发/],
+    ["知识与研究", /research|search|knowledge|document|filesystem|研究|搜索|知识|文档/],
+    ["数据分析", /data|database|sql|analytics|数据|分析/],
+    ["效率协作", /productivity|task|calendar|notion|linear|slack|协作|任务|日历/],
+    ["内容创作", /image|video|audio|design|pdf|presentation|内容|图像|视频|设计/],
+    ["安全治理", /security|audit|policy|identity|auth|安全|审计|权限/],
+    ["Agent 编排", /agent|model|llm|prompt|智能体|模型|提示词/]
   ];
-  return rules.find(([, pattern]) => pattern.test(value))?.[0] ?? fallback;
+  return rules.find(([, pattern]) => pattern.test(value))?.[0] ?? "通用";
 }
+
+const featuredWindSkills = new Set([
+  "万得金融数据", "财报解读", "DCF 估值模型", "个股投资逻辑研究", "上市公司一页纸投资报告",
+  "金融事实核验", "宏观数据解读", "基金筛选与投资建议", "债券利率走势研判", "全球上市公司财报点评"
+]);
 
 async function fetchJson(url, init) {
   const response = await fetch(url, { ...init, signal: AbortSignal.timeout(30_000) });
@@ -111,7 +124,7 @@ async function syncClawHub(maxItems = Number(process.env.CLAWHUB_LIMIT ?? 400)) 
       title: skill.displayName || skill.slug,
       description: skill.summary || skill.description || "ClawHub public Skill",
       version: skill.latestVersion?.version || skill.tags?.latest || "latest",
-      category: classify(text),
+      category: classify("skill", text),
       tags: compactTags([...(skill.topics ?? []), "clawhub", "agent-skill"]),
       provider: "ClawHub community",
       registry: "clawhub",
@@ -165,8 +178,8 @@ async function syncMcp(maxPages = Number(process.env.MCP_MAX_PAGES ?? 10)) {
       title: server.title || server.name,
       description: server.description || "Official MCP Registry server",
       version: server.version,
-      category: classify(text),
-      tags: compactTags(["mcp", classify(text), ...(remote ? [remote.type] : []), ...(packageInfo?.registryType ? [packageInfo.registryType] : [])]),
+      category: classify("mcp", text),
+      tags: compactTags(["mcp", classify("mcp", text), ...(remote ? [remote.type] : []), ...(packageInfo?.registryType ? [packageInfo.registryType] : [])]),
       provider: server.name.split("/")[0],
       registry: "mcp-official",
       resource: `https://registry.modelcontextprotocol.io/v0.1/servers/${encodeURIComponent(server.name)}/versions/latest`,
@@ -203,49 +216,45 @@ async function syncWind() {
     body: JSON.stringify({ pageNum: 1, pageSize: 1000 })
   });
   if (payload.code !== 0 || !Array.isArray(payload.data?.records)) throw new Error("Wind returned an invalid public skill catalog");
-  const skills = payload.data.records.map((skill) => ({
-    id: stableId("wind", `${skill.id}:${skill.name}`),
-    upstreamId: String(skill.id),
-    type: "skill",
-    title: skill.nameCn || skill.nameEn || skill.name,
-    description: skill.descriptionCn || skill.descriptionEn || "Wind AIFin Market Skill",
-    version: String(skill.version || "latest"),
-    category: `金融与投研 / ${skill.categoryCn || "金融技能"}`,
-    tags: compactTags(["wind", "finance", skill.categoryCn, skill.subCategoryCn, skill.source]),
-    provider: skill.source || "Wind AIFin Market",
-    registry: "wind-aifin",
-    resource: "https://aifinmarket.wind.com.cn/#/market",
-    upstreamArtifactUrl: "https://aifinmarket.wind.com.cn/skill.md",
-    runtime: "agent-skill/SKILL.md",
-    permissions: ["network:wind-provider", "credential:WIND_API_KEY"],
-    access: "account-and-api-key",
-    license: "provider-terms",
-    verification: ["Wind", "Wind Alice"].includes(skill.source) ? "publisher-listed" : "registry-listed",
-    risk: ["financial-data", "external-provider", "human-review-required"],
-    source: "remote",
-    popularity: { downloads: Number(skill.downloadCount ?? 0) },
-    updatedAt: syncedAt
-  }));
+  const skills = payload.data.records.map((skill) => {
+    const title = skill.nameCn || skill.nameEn || skill.name;
+    const featured = featuredWindSkills.has(title);
+    return {
+      id: stableId("wind", `${skill.id}:${skill.name}`),
+      upstreamId: String(skill.id),
+      type: "skill",
+      title,
+      description: skill.descriptionCn || skill.descriptionEn || "Wind AIFin Market Skill",
+      version: String(skill.version || "latest"),
+      category: "金融研究",
+      tags: compactTags(["wind", "finance", skill.categoryCn, skill.subCategoryCn, skill.source, "官方", ...(featured ? ["精选"] : [])]),
+      badges: ["官方", ...(featured ? ["精选"] : [])],
+      provider: skill.source || "Wind AIFin Market",
+      registry: "wind-aifin",
+      resource: "https://aifinmarket.wind.com.cn/#/market",
+      upstreamArtifactUrl: "https://aifinmarket.wind.com.cn/skill.md",
+      runtime: "agent-skill/SKILL.md",
+      permissions: ["network:wind-provider", "credential:WIND_API_KEY"],
+      access: "account-and-api-key",
+      license: "provider-terms",
+      verification: ["Wind", "Wind Alice"].includes(skill.source) ? "publisher-listed" : "registry-listed",
+      risk: ["financial-data", "external-provider", "human-review-required"],
+      source: "remote",
+      popularity: { downloads: Number(skill.downloadCount ?? 0) },
+      updatedAt: syncedAt
+    };
+  });
   const mcps = windMcpEntries.map(([slug, title, category, description, toolCount]) => ({
     id: stableId("wind-mcp", slug), upstreamId: slug, type: "mcp", title, description,
-    version: "provider-managed", category: `金融与投研 / ${category}`,
-    tags: compactTags(["wind", "mcp", "finance", category, `${toolCount}-tools`]),
+    version: "provider-managed", category: "金融数据",
+    tags: compactTags(["wind", "mcp", "finance", category, `${toolCount}-tools`, "官方", "精选"]), badges: ["官方", "精选"],
     provider: "Wind", registry: "wind-aifin", resource: "https://aifinmarket.wind.com.cn/#/market",
     upstreamArtifactUrl: "https://aifinmarket.wind.com.cn/skill.md", runtime: "mcp-provider-managed",
     permissions: ["network:wind-provider", "credential:WIND_API_KEY"], access: "account-and-api-key",
     license: "provider-terms", verification: "publisher-listed",
     risk: ["financial-data", "external-provider"], source: "remote", popularity: {}, updatedAt: syncedAt
   }));
-  const agent = {
-    id: stableId("wind-agent", "wind-alice"), upstreamId: "wind-alice", type: "agent",
-    title: "Wind Alice", description: "Wind Alice，一个全建制的金融团队。", version: "provider-managed",
-    category: "金融与投研 / 万得旗舰", tags: ["wind", "finance", "multi-agent"], provider: "Wind",
-    registry: "wind-aifin", resource: "https://aifinmarket.wind.com.cn/#/market",
-    runtime: "remote-agent", permissions: ["network:wind-provider", "credential:WIND_API_KEY"],
-    access: "account-and-api-key", license: "provider-terms", verification: "publisher-listed",
-    risk: ["financial-decision", "external-provider"], source: "remote", popularity: {}, updatedAt: syncedAt
-  };
-  return [...skills, ...mcps, agent];
+  return [...skills, ...mcps];
 }
 
 const groups = await Promise.all([syncClawHub(), syncMcp(), syncWind()]);
@@ -258,5 +267,5 @@ const sources = sourceDefinitions.map((source) => ({
 }));
 
 await mkdir(dirname(output), { recursive: true });
-await writeFile(output, `${JSON.stringify({ format: "snowmountain.market.imports/v1", syncedAt, sources, items }, null, 2)}\n`, "utf8");
+await writeFile(output, `${JSON.stringify({ format: "snowmountain.market.imports/v2", syncedAt, sources, items }, null, 2)}\n`, "utf8");
 console.log(`Synced ${items.length} external entries from ${sources.filter((source) => source.status === "synced").length} sources`);
