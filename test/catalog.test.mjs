@@ -5,14 +5,17 @@ import { buildCatalog } from "../scripts/build-catalog.mjs";
 
 test("builds the reviewed and imported catalog with provenance", async () => {
   const catalog = await buildCatalog();
-  assert.equal(catalog.format, "snowmountain-market-catalog/v2");
+  assert.equal(catalog.format, "snowmountain-market-catalog/v3");
   assert.ok(catalog.items.length >= 800);
-  assert.deepEqual(catalog.items.slice(0, 4).map((item) => item.id), [
-    "evidence-verifier",
+  assert.deepEqual(catalog.items.slice(0, 2).map((item) => item.id), [
     "filesystem-readonly-mcp",
-    "sandbox-probe",
     "workspace-researcher"
   ]);
+  assert.ok(catalog.items.every((item) => ["mcp", "skill", "plugin", "cli"].includes(item.type)));
+  assert.equal(catalog.items.some((item) => ["tool", "agent"].includes(item.type)), false);
+  assert.deepEqual(Object.keys(catalog.summary.types), ["mcp", "skill", "plugin", "cli"]);
+  assert.ok(catalog.summary.categoriesByType.skill["金融研究"] > 0);
+  assert.ok(catalog.summary.categoriesByType.mcp["金融数据"] > 0);
   assert.equal(new Set(catalog.items.map((item) => item.id)).size, catalog.items.length);
   assert.equal(catalog.sources.find((source) => source.id === "clawhub")?.itemCount, 400);
   assert.equal(catalog.sources.find((source) => source.id === "wind-aifin")?.itemCount, 98);
@@ -29,4 +32,7 @@ test("builds the reviewed and imported catalog with provenance", async () => {
   assert.equal(detail.install.automatic, false);
   assert.equal(detail.verification, "namespace-verified");
   assert.ok(detail.risk.includes("not-security-audited"));
+  const featuredWind = catalog.items.filter((item) => item.registry === "wind-aifin" && item.badges?.includes("精选"));
+  assert.ok(featuredWind.length >= 10);
+  assert.ok(featuredWind.every((item) => item.tags.includes("官方") && item.tags.includes("精选")));
 });

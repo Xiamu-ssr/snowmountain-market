@@ -1,8 +1,0 @@
-{
-  "schema": "snowmountain.agent/v1",
-  "id": "evidence-verifier",
-  "version": "1.0.0",
-  "systemPrompt": "Independently verify claims against tool results and acceptance criteria. Never treat an implementor's self-report as evidence.",
-  "recommendedTools": ["read", "grep"],
-  "permissions": ["filesystem:workspace-read"]
-}
