@@ -1,78 +1,100 @@
-# 雪山 Market
+# dsh-wind-aifin
 
-一个 Git-first、OKF-compatible 的可移植能力目录，只收纳四种一级资产：`MCP`、`Skill`、`Plugin`、`CLI`。`Tool` 是运行时暴露的调用单元，不是这里的发行包类型；`Agent Manifest` 属于方舟的 Agent 配置，也不进入这个解耦数据子项目。
+Credential-safe [Wind AIFin](https://aifinmarket.wind.com.cn/) integration for
+[DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) (DSH).
 
-Market 不执行安装、不托管用户凭证。构建产物只有静态网站、`api/catalog.json`、每条能力的详情 JSON，以及带 SHA-256 的制品文件。雪山方舟在 Agent 创建页读取这个 endpoint；其他 Agent 也可以独立消费。
+[简体中文](./README.zh-CN.md)
 
-## Git-first 是什么意思
+## What it provides
 
-Git-first 只说明**事实源和变更流程**，不等于“不需要程序或部署”：
+- Seven official Wind Streamable HTTP MCP domains are connected through DSH's
+  own `@deepseek-ai/dsh-mcp-client` and exposed as native tools:
+  `wind_stock`, `wind_fund`, `wind_index`, `wind_bond`, `wind_docs`,
+  `wind_economic`, and `wind_analytics`.
+- `wind_alice` invokes Wind Alice's professional financial-analysis workflows,
+  including fact checking, company one-pagers, earnings reviews, screening,
+  macro, bond, credit, fund, market-sizing, and comparable-company analysis.
+- Two runtime Skills teach the agent how to route requests without putting an
+  API key or shell commands into the prompt.
+- A Settings namespace declares `WIND_API_KEY` as a DSH credential reference.
 
-- 能力条目、版本、权限、来源和制品引用的权威数据保存在 Git 仓库；修改通过 commit / review / tag 审计。
-- 构建程序读取这些 Markdown 与 Manifest，校验 Schema 和 SHA-256，再生成前端和静态 JSON API。
-- 运行时仍需要浏览器前端和 HTTP 托管；当前由 Vite 构建、GitHub Pages 部署，也可以用仓库内 Dockerfile 自托管。
-- 部署后的数据来自构建时的 Git snapshot，不依赖在线数据库；仓库更新并重新部署后才会改变。
-- 外部 Registry 不在网站运行时被直接查询。`pnpm sync:external` 是一个显式动作，产物 `imports/external.json` 必须进入 Git review。
-- “Git-first”只适用于雪山 Market，不适用于数据库驱动的雪山方舟中台。
+## Why a plugin is needed
 
-## 分类模型
+DSH intentionally removes credential-shaped environment variables from
+model-visible shell processes. Putting `WIND_API_KEY` in the host environment
+therefore does not make the official Wind CLI available to an Agent's Bash
+tool—and copying the key into the workspace would defeat the boundary.
 
-- 一级类型：`MCP / Skill / Plugin / CLI`，固定且互斥。
-- 二级分类：只在一级类型内部生效，例如 Skill 的“金融研究”和 MCP 的“金融数据”。
-- 标签/徽章：跨分类表达“官方”“精选”等属性，不改变类型与分类。
-- 来源渠道：仅用于溯源、同步状态和数量展示，不参与分类。
+This plugin resolves the credential inside the trusted host process. Wind MCP
+traffic passes through a random, loopback-only adapter that injects the Bearer
+token and then delegates protocol handling and tool registration to DSH's MCP
+client. Alice resolves the same credential per operation. The key is never
+returned to the model, stored in plugin configuration, or exposed to ordinary
+Bash commands.
 
-## 外部来源（溯源信息）
+## Install
 
-| 来源 | 当前快照 | 接入边界 |
-|---|---:|---|
-| ClawHub | 400 Skills | 使用公开目录 API，只抓取 `nonSuspiciousOnly` 元数据；仍标记为未经过雪山安全审查 |
-| Official MCP Registry | 275 MCP Servers | 只收录当前 `active + latest` 快照；命名空间验证不等于服务端代码安全 |
-| Wind AIFin Market | 90 个市场 Skill、1 个官方发现 Skill、7 个数据域 MCP 投影 | 以官方 `skill.md` 与 `wind-skills` 为准；“官方”只表示 Wind 发布，“精选”是雪山对数据底座和核心研究工作流的选择 |
-| skills.sh | 来源已登记 | API 要求 Vercel OIDC，未绕过认证抓取 |
-| Anthropic Agent Skills | 来源已登记 | 子目录许可证不同；由上游目录覆盖，未重复复制内容 |
-
-同步：
-
-```bash
-pnpm sync:external
-pnpm test
-pnpm build
-```
-
-同步器只缓存目录元数据和上游链接，不下载或重新发布第三方代码。每条远端记录都包含类型、类内分类、标签、溯源、验证、许可证、访问条件和风险；前端按类型、分类与标签浏览，来源只读。
-
-## 本地运行
+DSH `0.1.0-rc.8` or newer is recommended.
 
 ```bash
-pnpm install
-pnpm test
-pnpm dev
+dsh plugin --profile web add github:Xiamu-ssr/snowmountain-market
 ```
 
-默认地址：`http://127.0.0.1:4320`；Catalog endpoint：`http://127.0.0.1:4320/api/catalog.json`。
+Restart the profile after installation. Install into another profile by
+replacing `web` with that profile's name.
 
-也可以构建静态容器：
+## Configure
+
+Create a Wind AIFin API key at the
+[Wind developer portal](https://aifinmarket.wind.com.cn/#/user/overview), then
+store it as the DSH credential reference `WIND_API_KEY` using the Credentials
+page. A deployment may instead provide `WIND_API_KEY` in the trusted DSH launch
+environment.
+
+Do not put the key in a workspace file, Skill file, prompt, MCP headers in
+`cordis.patch.yml`, or a model-visible shell profile.
+
+## Tool names
+
+MCP tools follow DSH's standard qualified naming convention:
+
+| Domain | Prefix |
+| --- | --- |
+| Stocks | `mcp__wind_stock__` |
+| Funds and ETFs | `mcp__wind_fund__` |
+| Indices and sectors | `mcp__wind_index__` |
+| Bonds | `mcp__wind_bond__` |
+| Filings and financial news | `mcp__wind_docs__` |
+| Macro and industry indicators | `mcp__wind_economic__` |
+| Cross-asset analytics | `mcp__wind_analytics__` |
+
+Wind Alice is exposed as `wind_alice` and accepts a prompt plus an optional
+professional workflow name.
+
+## Security and data flow
+
+- The credential adapter listens only on `127.0.0.1` and uses an unguessable
+  per-process route.
+- The adapter accepts only the seven fixed Wind endpoints; users cannot turn it
+  into a general authenticated proxy.
+- Credentials are resolved for each request and are not cached in files.
+- Financial requests and selected context are sent to Wind's service. Review
+  Wind's service terms before sending confidential information.
+- This plugin has no install script and does not bundle or redistribute Wind's
+  official Skills repository.
+
+In version `0.1.0`, Alice's final textual/data artifact is returned to the
+Agent; Alice-generated downloadable files are not automatically copied into the
+DSH workspace.
+
+## Development
 
 ```bash
-docker build -t snowmountain-market .
-docker run --rm -p 4320:80 snowmountain-market
+npm install
+npm test
+npm pack --dry-run
 ```
 
-## 添加条目
+See [SECURITY.md](./SECURITY.md) for vulnerability reporting and the trust
+boundary. This is a community adapter and is not an official Wind product.
 
-1. 在 `catalog/{skills,mcps,plugins,cli}` 新增带 OKF frontmatter 的 Markdown concept。
-2. 在 `artifacts/` 添加可审计 Manifest 或压缩制品。
-3. 在 `market.artifact` 中使用相对 concept 文件的路径。
-4. 运行 `pnpm test && pnpm build`。构建器会校验 Schema、阻止路径逃逸、计算 SHA-256 并生成静态 API。
-
-外部来源不要手工伪装成本地条目；更新 `imports/external.json` 应运行同步器并审查 diff。Registry 收录、下载量和发布方身份都不是雪山安全背书。
-
-## 部署
-
-仓库内的 GitHub Pages workflow 在 `main` 更新时构建并发布。部署时通过：
-
-- `BASE_PATH=/snowmountain-market/`
-- `PUBLIC_BASE_URL=https://xiamu-ssr.github.io/snowmountain-market`
-
-生成可从其他 Agent 平台访问的绝对 endpoint。

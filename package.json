@@ -1,31 +1,69 @@
 {
-  "name": "snowmountain-market",
+  "name": "@xiamu-ssr/dsh-wind-aifin",
   "version": "0.1.0",
-  "private": true,
+  "description": "Credential-safe Wind AIFin MCP and Alice integration for DeepSeek Harness.",
   "type": "module",
-  "packageManager": "pnpm@10.12.1",
+  "license": "MIT",
+  "author": "Xiamu-ssr",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Xiamu-ssr/snowmountain-market.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Xiamu-ssr/snowmountain-market/issues"
+  },
+  "homepage": "https://github.com/Xiamu-ssr/snowmountain-market#readme",
+  "keywords": [
+    "deepseek-harness",
+    "dsh-plugin",
+    "wind",
+    "aifin",
+    "mcp",
+    "finance"
+  ],
+  "exports": {
+    ".": "./lib/index.mjs",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/",
+    "skills/",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh-CN.md",
+    "SECURITY.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "catalog": "node scripts/build-catalog.mjs",
-    "sync:external": "node scripts/sync-external.mjs",
-    "dev": "pnpm catalog && vite --host 127.0.0.1 --port 4320",
-    "build": "pnpm catalog && tsc --noEmit && vite build",
-    "typecheck": "tsc --noEmit",
-    "preview": "vite preview --host 127.0.0.1 --port 4320",
+    "check": "node --check lib/index.mjs",
     "test": "node --test test/*.test.mjs"
   },
-  "dependencies": {
-    "gray-matter": "^4.0.3",
-    "lucide-react": "^0.525.0",
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0",
-    "zod": "^3.25.67"
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "peerDependencies": {
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-credentials": ">=0.1.0-rc.1 <0.2.0-0",
+    "@deepseek-ai/dsh-mcp-client": ">=0.1.0-rc.1 <0.2.0-0",
+    "@deepseek-ai/dsh-settings": ">=0.1.0-rc.1 <0.2.0-0",
+    "@deepseek-ai/dsh-skill": ">=0.1.0-rc.1 <0.2.0-0",
+    "@deepseek-ai/dsh-tools": ">=0.1.0-rc.1 <0.2.0-0",
+    "@deepseek-ai/schemastery": "^3.18.1"
   },
   "devDependencies": {
-    "@types/node": "^24.0.15",
-    "@types/react": "^19.1.8",
-    "@types/react-dom": "^19.1.6",
-    "@vitejs/plugin-react": "^4.6.0",
-    "typescript": "^5.8.3",
-    "vite": "^7.0.2"
+    "@deepseek-ai/cordis": "^4.0.1",
+    "@deepseek-ai/dsh-credentials": "^0.1.0-rc.8",
+    "@deepseek-ai/dsh-mcp-client": "^0.1.0-rc.8",
+    "@deepseek-ai/dsh-settings": "^0.1.0-rc.8",
+    "@deepseek-ai/dsh-skill": "^0.1.0-rc.8",
+    "@deepseek-ai/dsh-tools": "^0.1.0-rc.8",
+    "@deepseek-ai/schemastery": "^3.18.1"
+  },
+  "engines": {
+    "node": ">=22"
   }
 }
