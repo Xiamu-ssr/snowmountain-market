@@ -1,9 +1,0 @@
-{
-  "schema": "snowmountain.skill/v1",
-  "id": "workspace-researcher",
-  "version": "1.0.0",
-  "entrypoint": "SKILL.md",
-  "capabilities": ["filesystem:workspace-read"],
-  "files": ["SKILL.md"],
-  "install": "Copy the reviewed skill directory into your agent's configured skills folder."
-}
